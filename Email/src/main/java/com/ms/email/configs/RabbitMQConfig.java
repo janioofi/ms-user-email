@@ -9,18 +9,20 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
+
     @Value("${broker.queue.email.name}")
     private String queue;
 
     @Bean
-    public Queue queue(){
+    public Queue queue() {
         return new Queue(queue, true);
     }
 
     @Bean
-    public Jackson2JsonMessageConverter messageConverter(){
+    public Jackson2JsonMessageConverter messageConverter() {
         ObjectMapper objectMapper = new ObjectMapper();
         return new Jackson2JsonMessageConverter(objectMapper);
     }
+
 
 }
